@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Food = require("../models/Food");
 const multer = require("multer");
-const createFoodController = require("../controllers/foodController");
+const createFoodController = require("../controllers/foodController/index");
 const foodController = createFoodController({ Food });
 
 // Cấu hình multer để lưu ảnh
