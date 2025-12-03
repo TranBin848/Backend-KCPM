@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require("../db");
 const redisClient = require("../redisClient");
 const { getIO } = require("../socket");
-const createBookingController = require("../controllers/bookingController");
+const createBookingController = require("../controllers/bookingController/index");
 const bookingController = createBookingController({ pool, redisClient, getIO });
 
 // Lấy tất cả refund_booking
