@@ -49,7 +49,9 @@ describe("getFoodById", () => {
 
       await handler(mockReq, mockRes);
 
-      expect(mockFood.findById).toHaveBeenCalledWith("507f1f77bcf86cd799439011");
+      expect(mockFood.findById).toHaveBeenCalledWith(
+        "507f1f77bcf86cd799439011"
+      );
       expect(mockRes.json).toHaveBeenCalledWith(mockFoodItem);
       expect(mockRes.status).not.toHaveBeenCalled();
     });
@@ -147,7 +149,9 @@ describe("getFoodById", () => {
 
       await handler(mockReq, mockRes);
 
-      expect(mockFood.findById).toHaveBeenCalledWith("507f1f77bcf86cd799439011");
+      expect(mockFood.findById).toHaveBeenCalledWith(
+        "507f1f77bcf86cd799439011"
+      );
       expect(mockRes.status).toHaveBeenCalledWith(404);
       expect(mockRes.json).toHaveBeenCalledWith({
         error: "Không tìm thấy món ăn",

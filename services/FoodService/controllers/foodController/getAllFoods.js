@@ -8,7 +8,7 @@ module.exports = ({ Food }) => {
     try {
       const isAvailable = req.query.isAvailable;
       const filter = {};
-      
+
       // Only filter if value is explicitly "true" or "false"
       if (isAvailable === "true") {
         filter.isAvailable = true;
