@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const createMovie = require("./movieController/createMovie");
 
 // Controller factory for MovieService route handlers
 // Exports a function that accepts dependencies and returns handler functions.
