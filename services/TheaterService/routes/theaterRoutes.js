@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 const multer = require("multer");
-const createTheaterController = require("../controllers/theaterController");
+const createTheaterController = require("../controllers/theaterController/index");
 
 const theaterController = createTheaterController({ pool });
 
