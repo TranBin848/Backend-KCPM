@@ -22,9 +22,15 @@ describe("resetPassword", () => {
     };
 
     mockOtpStore = new Map();
-    mockOtpStore.set = jest.fn((key, value) => Map.prototype.set.call(mockOtpStore, key, value));
-    mockOtpStore.get = jest.fn((key) => Map.prototype.get.call(mockOtpStore, key));
-    mockOtpStore.delete = jest.fn((key) => Map.prototype.delete.call(mockOtpStore, key));
+    mockOtpStore.set = jest.fn((key, value) =>
+      Map.prototype.set.call(mockOtpStore, key, value)
+    );
+    mockOtpStore.get = jest.fn((key) =>
+      Map.prototype.get.call(mockOtpStore, key)
+    );
+    mockOtpStore.delete = jest.fn((key) =>
+      Map.prototype.delete.call(mockOtpStore, key)
+    );
 
     handler = resetPassword({
       pool: mockPool,
@@ -41,7 +47,7 @@ describe("resetPassword", () => {
       status: jest.fn().mockReturnThis(),
     };
 
-    jest.spyOn(Date, 'now').mockReturnValue(1700000000000);
+    jest.spyOn(Date, "now").mockReturnValue(1700000000000);
   });
 
   afterEach(() => {

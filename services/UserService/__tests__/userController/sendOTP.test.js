@@ -39,8 +39,8 @@ describe("sendOTP", () => {
       status: jest.fn().mockReturnThis(),
     };
 
-    jest.spyOn(Date, 'now').mockReturnValue(1700000000000);
-    jest.spyOn(Math, 'random').mockReturnValue(0.5);
+    jest.spyOn(Date, "now").mockReturnValue(1700000000000);
+    jest.spyOn(Math, "random").mockReturnValue(0.5);
   });
 
   afterEach(() => {
