@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../db");
-const createRoomController = require("../controllers/roomController");
+const createRoomController = require("../controllers/roomController/index");
 
 const roomController = createRoomController({ pool });
 

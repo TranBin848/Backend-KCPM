@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../db");
-const createSeatController = require("../controllers/seatController");
+const createSeatController = require("../controllers/seatController/index");
 
 const seatController = createSeatController({ pool });
 
