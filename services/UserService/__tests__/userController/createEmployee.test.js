@@ -261,7 +261,7 @@ describe("createEmployee", () => {
       mockBcrypt.hash.mockResolvedValue("hashed");
       const error = new Error("Duplicate key");
       error.code = "23505";
-      error.detail = 'Key (email)=(existing@example.com) already exists.';
+      error.detail = "Key (email)=(existing@example.com) already exists.";
       mockPool.query.mockRejectedValue(error);
 
       await handler(mockReq, mockRes);
@@ -287,7 +287,7 @@ describe("createEmployee", () => {
       mockBcrypt.hash.mockResolvedValue("hashed");
       const error = new Error("Duplicate key");
       error.code = "23505";
-      error.detail = 'Key (phone)=(0999999999) already exists.';
+      error.detail = "Key (phone)=(0999999999) already exists.";
       mockPool.query.mockRejectedValue(error);
 
       await handler(mockReq, mockRes);
@@ -360,7 +360,7 @@ describe("createEmployee", () => {
       mockBcrypt.hash.mockResolvedValue("hashed");
       const error = new Error("Constraint violation");
       error.code = "23505";
-      error.detail = 'Key (unknown_field)=(value) already exists.';
+      error.detail = "Key (unknown_field)=(value) already exists.";
       mockPool.query.mockRejectedValue(error);
 
       await handler(mockReq, mockRes);

@@ -211,7 +211,8 @@ describe("getAllEmployees", () => {
 
       expect(mockRes.status).toHaveBeenCalledWith(500);
       expect(mockRes.json).toHaveBeenCalledWith({
-        error: "Lỗi server khi lấy danh sách nhân viên: Database connection lost",
+        error:
+          "Lỗi server khi lấy danh sách nhân viên: Database connection lost",
       });
     });
 
