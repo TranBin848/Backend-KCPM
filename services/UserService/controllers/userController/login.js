@@ -8,14 +8,12 @@ module.exports = ({ pool, bcrypt, jwt }) => {
     const { email, password } = req.body;
 
     try {
-      const result = await pool.query(
-        "SELECT * FROM users WHERE email = $1",
-        [email]
-      );
+      const result = await pool.query("SELECT * FROM users WHERE email = $1", [
+        email,
+      ]);
       const user = result.rows[0];
 
-      if (!user)
-        return res.status(401).json({ error: "Email không tồn tại!" });
+      if (!user) return res.status(401).json({ error: "Email không tồn tại!" });
 
       const valid = await bcrypt.compare(password, user.password);
       if (!valid) return res.status(401).json({ error: "Sai mật khẩu!" });

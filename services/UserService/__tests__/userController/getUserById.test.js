@@ -262,9 +262,7 @@ describe("getUserById", () => {
 
     it("should return 500 on connection error", async () => {
       mockReq.params.id = "1";
-      mockPool.query.mockRejectedValue(
-        new Error("Connection pool exhausted")
-      );
+      mockPool.query.mockRejectedValue(new Error("Connection pool exhausted"));
 
       await handler(mockReq, mockRes);
 
@@ -431,10 +429,9 @@ describe("getUserById", () => {
       await handler(mockReq, mockRes);
 
       // Parameterized query should prevent injection
-      expect(mockPool.query).toHaveBeenCalledWith(
-        expect.any(String),
-        ["1 OR 1=1"]
-      );
+      expect(mockPool.query).toHaveBeenCalledWith(expect.any(String), [
+        "1 OR 1=1",
+      ]);
     });
 
     it("should handle empty string id", async () => {

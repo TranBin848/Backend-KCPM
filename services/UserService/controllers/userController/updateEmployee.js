@@ -6,15 +6,8 @@
 module.exports = ({ pool }) => {
   return async (req, res) => {
     const employeeId = parseInt(req.params.id);
-    const {
-      name,
-      email,
-      phone,
-      gender,
-      birthdate,
-      identity_card,
-      workplace,
-    } = req.body;
+    const { name, email, phone, gender, birthdate, identity_card, workplace } =
+      req.body;
 
     try {
       const result = await pool.query(

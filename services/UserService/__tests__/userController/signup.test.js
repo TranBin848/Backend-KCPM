@@ -156,7 +156,8 @@ describe("signup", () => {
       mockBcrypt.hash.mockResolvedValue("hashedPassword");
       const duplicateError = new Error("Duplicate key");
       duplicateError.code = "23505";
-      duplicateError.detail = "Key (email)=(existing@example.com) already exists.";
+      duplicateError.detail =
+        "Key (email)=(existing@example.com) already exists.";
       mockPool.query.mockRejectedValue(duplicateError);
 
       await handler(mockReq, mockRes);

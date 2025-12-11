@@ -6,9 +6,7 @@
 module.exports = ({ pool }) => {
   return async (req, res) => {
     try {
-      const result = await pool.query(
-        "SELECT * FROM booking ORDER BY id DESC"
-      );
+      const result = await pool.query("SELECT * FROM booking ORDER BY id DESC");
       res.json(result.rows);
     } catch (err) {
       res.status(500).json({ error: err.message });
