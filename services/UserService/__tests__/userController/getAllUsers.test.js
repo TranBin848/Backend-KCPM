@@ -61,7 +61,9 @@ describe("getAllUsers", () => {
       await handler(mockReq, mockRes);
 
       expect(mockPool.query).toHaveBeenCalledWith(
-        expect.stringContaining("SELECT id, name, email, phone, gender, birthdate, role, points, rank")
+        expect.stringContaining(
+          "SELECT id, name, email, phone, gender, birthdate, role, points, rank"
+        )
       );
       expect(mockPool.query).toHaveBeenCalledWith(
         expect.stringContaining("WHERE role = 'user'")
@@ -108,9 +110,30 @@ describe("getAllUsers", () => {
 
     it("should return users ordered by id ascending", async () => {
       const mockUsers = [
-        { id: 1, name: "User 1", email: "user1@example.com", role: "user", points: 10, rank: "bronze" },
-        { id: 2, name: "User 2", email: "user2@example.com", role: "user", points: 20, rank: "silver" },
-        { id: 5, name: "User 5", email: "user5@example.com", role: "user", points: 50, rank: "gold" },
+        {
+          id: 1,
+          name: "User 1",
+          email: "user1@example.com",
+          role: "user",
+          points: 10,
+          rank: "bronze",
+        },
+        {
+          id: 2,
+          name: "User 2",
+          email: "user2@example.com",
+          role: "user",
+          points: 20,
+          rank: "silver",
+        },
+        {
+          id: 5,
+          name: "User 5",
+          email: "user5@example.com",
+          role: "user",
+          points: 50,
+          rank: "gold",
+        },
       ];
 
       mockPool.query.mockResolvedValue({ rows: mockUsers });
@@ -246,9 +269,7 @@ describe("getAllUsers", () => {
     });
 
     it("should return 500 on connection pool exhausted", async () => {
-      mockPool.query.mockRejectedValue(
-        new Error("Connection pool exhausted")
-      );
+      mockPool.query.mockRejectedValue(new Error("Connection pool exhausted"));
 
       await handler(mockReq, mockRes);
 
@@ -318,10 +339,38 @@ describe("getAllUsers", () => {
 
     it("should handle users with different rank values", async () => {
       const mockUsers = [
-        { id: 1, name: "Bronze User", email: "bronze@example.com", role: "user", points: 10, rank: "bronze" },
-        { id: 2, name: "Silver User", email: "silver@example.com", role: "user", points: 100, rank: "silver" },
-        { id: 3, name: "Gold User", email: "gold@example.com", role: "user", points: 500, rank: "gold" },
-        { id: 4, name: "Platinum User", email: "platinum@example.com", role: "user", points: 1000, rank: "platinum" },
+        {
+          id: 1,
+          name: "Bronze User",
+          email: "bronze@example.com",
+          role: "user",
+          points: 10,
+          rank: "bronze",
+        },
+        {
+          id: 2,
+          name: "Silver User",
+          email: "silver@example.com",
+          role: "user",
+          points: 100,
+          rank: "silver",
+        },
+        {
+          id: 3,
+          name: "Gold User",
+          email: "gold@example.com",
+          role: "user",
+          points: 500,
+          rank: "gold",
+        },
+        {
+          id: 4,
+          name: "Platinum User",
+          email: "platinum@example.com",
+          role: "user",
+          points: 1000,
+          rank: "platinum",
+        },
       ];
 
       mockPool.query.mockResolvedValue({ rows: mockUsers });

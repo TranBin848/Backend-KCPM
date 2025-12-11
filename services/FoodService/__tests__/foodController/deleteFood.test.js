@@ -136,9 +136,7 @@ describe("deleteFood", () => {
   describe("Error cases", () => {
     it("should return 400 when database delete fails", async () => {
       mockReq.params.id = "507f1f77bcf86cd799439011";
-      mockFood.findByIdAndDelete.mockRejectedValue(
-        new Error("Database error")
-      );
+      mockFood.findByIdAndDelete.mockRejectedValue(new Error("Database error"));
 
       await handler(mockReq, mockRes);
 

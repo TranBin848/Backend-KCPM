@@ -252,8 +252,7 @@ describe("getRefundBookings", () => {
         refund_reason: `Refund ${100 - i}`,
         refund_status: ["pending", "approved", "rejected"][i % 3],
         request_date: "2025-12-01T10:00:00Z",
-        refund_date:
-          i % 3 === 0 ? null : "2025-12-01T15:00:00Z",
+        refund_date: i % 3 === 0 ? null : "2025-12-01T15:00:00Z",
       }));
 
       mockPool.query.mockResolvedValue({ rows: mockRefunds });
@@ -319,9 +318,7 @@ describe("getRefundBookings", () => {
     });
 
     it("should return 500 on connection pool exhausted", async () => {
-      mockPool.query.mockRejectedValue(
-        new Error("Connection pool exhausted")
-      );
+      mockPool.query.mockRejectedValue(new Error("Connection pool exhausted"));
 
       await handler(mockReq, mockRes);
 
@@ -512,9 +509,33 @@ describe("getRefundBookings", () => {
 
     it("should maintain DESC order with gaps in id sequence", async () => {
       const mockRefunds = [
-        { id: 100, booking_id: 100, refund_amount: 100000, refund_reason: "Test", refund_status: "pending", request_date: "2025-12-01T10:00:00Z", refund_date: null },
-        { id: 50, booking_id: 50, refund_amount: 50000, refund_reason: "Test", refund_status: "approved", request_date: "2025-12-01T10:00:00Z", refund_date: "2025-12-01T15:00:00Z" },
-        { id: 10, booking_id: 10, refund_amount: 10000, refund_reason: "Test", refund_status: "rejected", request_date: "2025-12-01T10:00:00Z", refund_date: "2025-12-01T15:00:00Z" },
+        {
+          id: 100,
+          booking_id: 100,
+          refund_amount: 100000,
+          refund_reason: "Test",
+          refund_status: "pending",
+          request_date: "2025-12-01T10:00:00Z",
+          refund_date: null,
+        },
+        {
+          id: 50,
+          booking_id: 50,
+          refund_amount: 50000,
+          refund_reason: "Test",
+          refund_status: "approved",
+          request_date: "2025-12-01T10:00:00Z",
+          refund_date: "2025-12-01T15:00:00Z",
+        },
+        {
+          id: 10,
+          booking_id: 10,
+          refund_amount: 10000,
+          refund_reason: "Test",
+          refund_status: "rejected",
+          request_date: "2025-12-01T10:00:00Z",
+          refund_date: "2025-12-01T15:00:00Z",
+        },
       ];
 
       mockPool.query.mockResolvedValue({ rows: mockRefunds });

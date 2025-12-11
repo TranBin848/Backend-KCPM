@@ -18,9 +18,7 @@ module.exports = ({ pool, getIO }) => {
 
       if (bookingResult.rows.length === 0) {
         await client.query("ROLLBACK");
-        return res
-          .status(404)
-          .json({ message: "No refund request to cancel" });
+        return res.status(404).json({ message: "No refund request to cancel" });
       }
 
       await client.query(

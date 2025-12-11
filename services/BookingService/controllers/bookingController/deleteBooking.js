@@ -25,9 +25,7 @@ module.exports = ({ pool, redisClient }) => {
         req.params.id,
       ]);
 
-      await client.query("DELETE FROM booking WHERE id = $1", [
-        req.params.id,
-      ]);
+      await client.query("DELETE FROM booking WHERE id = $1", [req.params.id]);
 
       const cacheKey = `locked_seats:${showtimeId}`;
       await redisClient.del(cacheKey);

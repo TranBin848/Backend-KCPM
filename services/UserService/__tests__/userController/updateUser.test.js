@@ -61,7 +61,14 @@ describe("updateUser", () => {
 
       expect(mockPool.query).toHaveBeenCalledWith(
         expect.stringContaining("UPDATE users"),
-        ["Updated Name", "updated@example.com", "0999888777", "male", "1990-05-15", 1]
+        [
+          "Updated Name",
+          "updated@example.com",
+          "0999888777",
+          "male",
+          "1990-05-15",
+          1,
+        ]
       );
       expect(mockRes.json).toHaveBeenCalledWith({
         message: "Cập nhật thông tin người dùng thành công.",
@@ -330,7 +337,8 @@ describe("updateUser", () => {
 
       const duplicateError = new Error("Duplicate key");
       duplicateError.code = "23505";
-      duplicateError.detail = "Key (email)=(existing@example.com) already exists.";
+      duplicateError.detail =
+        "Key (email)=(existing@example.com) already exists.";
       mockPool.query.mockRejectedValue(duplicateError);
 
       await handler(mockReq, mockRes);
@@ -413,9 +421,7 @@ describe("updateUser", () => {
         birthdate: "1990-01-01",
       };
 
-      mockPool.query.mockRejectedValue(
-        new Error("Connection pool exhausted")
-      );
+      mockPool.query.mockRejectedValue(new Error("Connection pool exhausted"));
 
       await handler(mockReq, mockRes);
 

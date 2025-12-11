@@ -6,12 +6,7 @@
 module.exports = ({ pool, redisClient }) => {
   return async (req, res) => {
     const { status } = req.body;
-    const validStatuses = [
-      "PENDING",
-      "PAID",
-      "CANCELLED",
-      "REFUND_REQUESTED",
-    ];
+    const validStatuses = ["PENDING", "PAID", "CANCELLED", "REFUND_REQUESTED"];
 
     if (!validStatuses.includes(status)) {
       return res.status(400).json({ error: "Invalid status value" });

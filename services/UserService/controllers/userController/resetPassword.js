@@ -18,7 +18,7 @@ module.exports = ({ pool, bcrypt, otpStore }) => {
         .status(400)
         .json({ error: "OTP không hợp lệ hoặc đã hết hạn." });
 
-    if (record.expiresAt < Date.now()) {
+    if (record.expiresAt <= Date.now()) {
       otpStore.delete(email);
       return res.status(400).json({ error: "OTP đã hết hạn." });
     }
