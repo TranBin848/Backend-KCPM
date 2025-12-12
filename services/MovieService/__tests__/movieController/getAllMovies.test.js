@@ -1,3 +1,5 @@
+const createMovieController = require("../../controllers/movieController");
+
 describe("getAllMovies Controller", () => {
   let mockReq;
   let mockRes;

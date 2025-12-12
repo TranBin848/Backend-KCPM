@@ -1,5 +1,7 @@
 const mongoose = require('mongoose'); 
 
+const createMovieController = require("../../controllers/movieController");
+
 describe("updateMovie Controller", () => {
   let mockReq;
   let mockRes;
