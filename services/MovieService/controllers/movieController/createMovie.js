@@ -5,7 +5,12 @@
 module.exports = ({ Movie }) => {
   return async (req, res) => {
     try {
-      const movieData = JSON.parse(req.body.data);
+      const movieData = JSON.parse(req.body.data || "{}");
+      const { title } = movieData;
+
+      if (!title || !title.trim()) {
+        throw new Error("Tên phim (title) là bắt buộc");
+      }
       const posterUrl = req.file ? `uploads/${req.file.filename}` : null;
       movieData.poster = posterUrl;
 

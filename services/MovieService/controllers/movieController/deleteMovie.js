@@ -9,6 +9,14 @@ module.exports = ({ Movie }) => {
       if (!deleted) {
         return res.status(404).json({ error: "Không tìm thấy phim để xóa" });
       }
+      // Import fs at top of file
+      if (deleted.poster) {
+        try {
+          await fs.unlink(deleted.poster); // Cleanup Logic Added
+        } catch (fileErr) {
+          console.error("Failed to delete poster:", fileErr);
+        }
+      }
       res.json({ message: "Xóa phim thành công" });
     } catch (err) {
       res

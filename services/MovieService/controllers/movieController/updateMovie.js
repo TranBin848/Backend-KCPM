@@ -5,8 +5,15 @@
 module.exports = ({ Movie }) => {
   return async (req, res) => {
     try {
-      const movieId = req.params.id;
-      const parsedData = JSON.parse(req.body.data);
+      const movieId = req.params.id;      
+      const parsedData = JSON.parse(req.body.data || "{}");
+
+      // Validation Logic Added
+      if (parsedData.title !== undefined && (!parsedData.title || parsedData.title.trim() === "")) {
+        return res.status(400).json({ error: "Tên phim không được để trống" });
+      }
+
+
 
       // Nếu có file mới thì thêm path ảnh mới
       if (req.file) {
@@ -15,6 +22,7 @@ module.exports = ({ Movie }) => {
 
       const updatedMovie = await Movie.findByIdAndUpdate(movieId, parsedData, {
         new: true,
+        runValidators: true // Enforce Schema Validation
       });
 
       if (!updatedMovie) {
