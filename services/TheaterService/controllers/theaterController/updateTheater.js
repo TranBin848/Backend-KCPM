@@ -43,13 +43,24 @@ module.exports = ({ pool }) => {
       // ==== DELETE OLD IMAGES ====
       if (deletedImages && deletedImages.length > 0) {
         for (const url of deletedImages) {
+          //fixed code
+          const relativePath = url.substring(url.indexOf("/uploads/")); 
+
           await pool.query(
             "DELETE FROM theater_galleries WHERE theater_id = $1 AND image_url = $2",
             [
               theaterId,
-              url.replace("http://localhost:8080/theaters", ""),
+              relativePath // Dùng biến này an toàn hơn
             ]
           );
+
+          // await pool.query(
+          //   "DELETE FROM theater_galleries WHERE theater_id = $1 AND image_url = $2",
+          //   [
+          //     theaterId,
+          //     url.replace("http://localhost:8080/theaters", ""),
+          //   ]
+          // );
 
           const filePath = path.join(
             __dirname,

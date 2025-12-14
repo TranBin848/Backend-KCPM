@@ -8,6 +8,17 @@ module.exports = ({ pool }) => {
         .json({ error: "Thiếu room_name, theater_id hoặc room_type" });
     }
 
+    //fixed code 
+    const validTypes = ['2D', '3D', 'IMAX', '4DX'];
+
+    if (!room_name || !room_name.trim()) {
+      return res.status(400).json({ error: "Tên phòng không được để trống" });
+    }
+    if (!validTypes.includes(room_type)) {
+      return res.status(400).json({ error: "Loại phòng không hợp lệ (2D, 3D, IMAX, 4DX)" });
+    }
+
+
     try {
       const existingRoom = await pool.query(
         `SELECT 1 FROM rooms WHERE theater_id = $1 AND room_name = $2`,
