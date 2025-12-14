@@ -9,6 +9,8 @@ module.exports = ({ Movie }) => {
       if (!deleted) {
         return res.status(404).json({ error: "Không tìm thấy phim để xóa" });
       }
+
+      //fixed code
       // Import fs at top of file
       if (deleted.poster) {
         try {

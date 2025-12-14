@@ -5,6 +5,7 @@
 module.exports = ({ Movie }) => {
   return async (req, res) => {
     try {
+      //fixed code
       const movieData = JSON.parse(req.body.data || "{}");
       const { title } = movieData;
 
