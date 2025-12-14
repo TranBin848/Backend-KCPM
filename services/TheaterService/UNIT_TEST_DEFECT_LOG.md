@@ -14,18 +14,18 @@
 
 | ID | Module | Type | Severity | Status | Found Date | Fixed Date | Test File |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **ROOM-001** | createRoom | Validation Error | Major ⚠️ | Fixed ✅ | 2025-12-14 | 2025-12-15 | createRoom.test.js |
-| **ROOM-002** | updateRoom | Logic Error | Major ⚠️ | Fixed ✅ | 2025-12-14 | 2025-12-15 | updateRoom.test.js |
-| **ROOM-003** | deleteRoom | Data Integrity | Critical 🔴 | Fixed ✅ | 2025-12-14 | 2025-12-15 | deleteRoom.test.js |
-| **ROOM-004** | updateRoom | Validation Error | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-15 | updateRoom.test.js |
-| **SEAT-001** | generateSeats | Data Integrity | Critical 🔴 | Fixed ✅ | 2025-12-14 | 2025-12-15 | generateSeats.test.js |
-| **SEAT-002** | getSeatById | Validation Error | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-15 | getSeatById.test.js |
-| **SEAT-003** | updateSeatType | Validation Error | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-15 | updateSeatType.test.js |
+| **ROOM-001** | createRoom | Validation Error | Major ⚠️ | Fixed ✅ | 2025-12-14 | 2025-12-14 | createRoom.test.js |
+| **ROOM-002** | updateRoom | Logic Error | Major ⚠️ | Fixed ✅ | 2025-12-14 | 2025-12-14 | updateRoom.test.js |
+| **ROOM-003** | deleteRoom | Data Integrity | Critical 🔴 | Fixed ✅ | 2025-12-14 | 2025-12-14 | deleteRoom.test.js |
+| **ROOM-004** | updateRoom | Validation Error | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-14 | updateRoom.test.js |
+| **SEAT-001** | generateSeats | Data Integrity | Critical 🔴 | Fixed ✅ | 2025-12-14 | 2025-12-14 | generateSeats.test.js |
+| **SEAT-002** | getSeatById | Validation Error | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-14 | getSeatById.test.js |
+| **SEAT-003** | updateSeatType | Validation Error | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-14 | updateSeatType.test.js |
 | **SEAT-004** | getSeatsByRoom | Logic Error | Minor 🟡 | Open 🔴 | 2025-12-14 | - | getSeatsByRoom.test.js |
-| **THEATER-001** | deleteTheater | Resource Leak | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-15 | deleteTheater.test.js |
-| **THEATER-002** | createTheater | Validation Error | Major ⚠️ | Fixed ✅ | 2025-12-14 | 2025-12-15 | createTheater.test.js |
-| **THEATER-003** | updateTheater | Logic Error | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-15 | updateTheater.test.js |
-| **THEATER-004** | createTheater | Error Handling | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-15 | createTheater.test.js |
+| **THEATER-001** | deleteTheater | Resource Leak | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-14 | deleteTheater.test.js |
+| **THEATER-002** | createTheater | Validation Error | Major ⚠️ | Fixed ✅ | 2025-12-14 | 2025-12-14 | createTheater.test.js |
+| **THEATER-003** | updateTheater | Logic Error | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-14 | updateTheater.test.js |
+| **THEATER-004** | createTheater | Error Handling | Minor 🟡 | Fixed ✅ | 2025-12-14 | 2025-12-14 | createTheater.test.js |
 | **THEATER-005** | getAllTheaters | Performance Issue | Minor 🟡 | Open 🔴 | 2025-12-14 | - | getAllTheaters.test.js |
 
 ---
