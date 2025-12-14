@@ -31,6 +31,11 @@ const createShowtime = ({ Showtime, fetchMovieById, fetchRoomsByTheater }) => {
       });
     }
 
+    //code sau fixed
+    if (Number(priceRegular) < 0 || Number(priceVIP) < 0) {
+        return res.status(400).json({ error: "Giá vé không được nhỏ hơn 0" });
+    }
+
     try {
       const movie = await fetchMovieById(movieId);
       if (!movie) {

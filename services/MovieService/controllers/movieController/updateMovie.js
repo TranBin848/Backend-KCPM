@@ -8,12 +8,11 @@ module.exports = ({ Movie }) => {
       const movieId = req.params.id;      
       const parsedData = JSON.parse(req.body.data || "{}");
 
+      //fixed code
       // Validation Logic Added
       if (parsedData.title !== undefined && (!parsedData.title || parsedData.title.trim() === "")) {
         return res.status(400).json({ error: "Tên phim không được để trống" });
       }
-
-
 
       // Nếu có file mới thì thêm path ảnh mới
       if (req.file) {

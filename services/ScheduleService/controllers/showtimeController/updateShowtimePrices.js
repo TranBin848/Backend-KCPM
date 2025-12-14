@@ -17,6 +17,12 @@ const updateShowtimePrices = ({ Showtime }) => {
 
     try {
       const updateFields = {};
+      //code sau fixed
+      if ((priceRegular != null && Number(priceRegular) < 0) ||
+          (priceVIP != null && Number(priceVIP) < 0)) {
+       return res.status(400).json({ error: "Giá vé cập nhật không hợp lệ (phải >= 0)" });
+      }
+
       if (priceRegular != null) updateFields.priceRegular = priceRegular;
       if (priceVIP != null) updateFields.priceVIP = priceVIP;
 

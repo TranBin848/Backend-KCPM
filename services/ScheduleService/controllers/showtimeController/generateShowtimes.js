@@ -63,8 +63,11 @@ const generateShowtimes = ({
       const durationMs = (movie.duration + 5) * 60 * 1000;
       const createdShowtimes = [];
 
+      //code sau fixed
       const start = new Date(startDate);
+      start.setHours(0,0,0,0); // Ensure midnight
       const end = new Date(endDate);
+      end.setHours(23,59,59,999); // Cover full end day
 
       for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
         const date = new Date(d);
