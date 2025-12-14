@@ -3,7 +3,9 @@ module.exports = ({ pool }) => {
     const { id } = req.params;
     const { type } = req.body;
 
-    if (!["vip", "regular"].includes(type)) {
+    //fixed code
+    const normalizedType = type.toLowerCase();
+    if (!["vip", "regular"].includes(normalizedType)) {
       return res.status(400).json({
         error: "Loại ghế không hợp lệ. Chỉ chấp nhận 'vip' hoặc 'regular'",
       });
@@ -19,10 +21,9 @@ module.exports = ({ pool }) => {
         return res.status(404).json({ error: "Không tìm thấy ghế" });
       }
 
-      await pool.query(
-        `UPDATE seats SET type = $1 WHERE id = $2`,
-        [type, id]
-      );
+      //fixed code
+      // Use normalizedType in DB update
+      await pool.query(`UPDATE seats SET type = $1 WHERE id = $2`, [normalizedType, id]);
 
       res.status(200).json({
         message: `Đã chuyển ghế sang loại '${type}'`,

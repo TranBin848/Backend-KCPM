@@ -9,6 +9,13 @@ module.exports = ({ pool }) => {
     }
 
     try {
+      //fixed code
+      // Check room existence first
+      const roomCheck = await pool.query('SELECT 1 FROM rooms WHERE id = $1', [room_id]);
+      if (roomCheck.rows.length === 0) {
+        return res.status(404).json({ error: "Phòng chiếu không tồn tại" });
+      }
+      
       // Xóa ghế cũ
       await pool.query(`DELETE FROM seats WHERE room_id = $1`, [room_id]);
 

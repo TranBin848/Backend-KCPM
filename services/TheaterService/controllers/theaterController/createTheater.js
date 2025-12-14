@@ -17,36 +17,44 @@ module.exports = ({ pool }) => {
         hotline,
       } = data;
 
-      const result = await pool.query(
-        `INSERT INTO theaters (name, latitude, longitude, status, city, district, address, hotline)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-        [
-          name,
-          latitude || 0,
-          longitude || 0,
-          status || "active",
-          city,
-          district,
-          address,
-          hotline,
-        ]
-      );
-
-      const theaterId = result.rows[0].id;
-
-      // Insert gallery
-      if (req.files && req.files.length > 0) {
-        const queries = req.files.map((file) =>
-          pool.query(
-            `INSERT INTO theater_galleries (theater_id, image_url)
-             VALUES ($1, $2)`,
-            [theaterId, `/uploads/${file.filename}`]
+      //fixed code
+      if (!name || name.trim().length === 0) {
+        // Cleanup uploaded files if any
+        if (req.files) {
+          const result = await pool.query(
+            `INSERT INTO theaters (name, latitude, longitude, status, city, district, address, hotline)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+            [
+              name,
+              latitude || 0,
+              longitude || 0,
+              status || "active",
+              city,
+              district,
+              address,
+              hotline,
+            ]
           )
-        );
-        await Promise.all(queries);
-      }
 
-      res.status(201).json(result.rows[0]);
+          const theaterId = result.rows[0].id;
+
+          // Insert gallery
+          if (req.files && req.files.length > 0) {
+            const queries = req.files.map((file) =>
+              pool.query(
+                `INSERT INTO theater_galleries (theater_id, image_url)
+                VALUES ($1, $2)`,
+                [theaterId, `/uploads/${file.filename}`]
+              )
+            );
+            await Promise.all(queries);
+          }
+
+          res.status(201).json(result.rows[0]);
+        }
+        //fixed code
+        return res.status(400).json({ error: "Tên rạp là bắt buộc" });
+      }
     } catch (error) {
       // cleanup uploaded images (trash files)
       if (req.files) {
