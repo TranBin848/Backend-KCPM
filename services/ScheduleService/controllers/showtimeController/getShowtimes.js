@@ -14,8 +14,12 @@ const getShowtimes = ({ Showtime }) => {
         query["room.roomId"] = roomId;
       }
 
+      //fixed code
       if (date) {
-        query.date = new Date(date);
+        const parsedDate = new Date(date);
+        if (!isNaN(parsedDate.getTime())) {
+          query.date = parsedDate;
+        }
       }
 
       if (movieId) {
